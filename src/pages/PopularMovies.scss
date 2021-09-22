@@ -1,0 +1,80 @@
+.popularMoviesWrapper {
+  padding: 30px;
+  h2 {
+    font-weight: 600;
+  }
+  .popularMovies {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    .popularMoviesLeft {
+      width: 25%;
+    }
+    .popularMoviesRight {
+      width: 75%;
+      display: flex;
+      flex-wrap: wrap;
+
+      .popularMoviesCard {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-top: 20px;
+        margin-right: 20px;
+        cursor: pointer;
+        width: 173px;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.08);
+        padding-bottom: 20px;
+        border: rgba(0, 0, 0, 0.2) 1px solid;
+        .popularMoviesImage {
+          border-top-left-radius: 8px;
+          border-top-right-radius: 8px;
+          width: 100%;
+          height: 262px;
+        }
+        small {
+          position: absolute;
+          top: 245px;
+          left: 10px;
+          height: 30px;
+          width: 30px;
+          font-weight: 800;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          color: black;
+          border: 2px solid green;
+          box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.2);
+          background-color: white;
+        }
+        h4 {
+          margin-top: 25px;
+          margin-left: 10px;
+        }
+        span {
+          margin-left: 10px;
+        }
+      }
+
+      .popularButton {
+        margin-top: 30px;
+        padding: 0;
+        max-width: 100%;
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        background-color: rgb(1, 180, 228);
+        justify-content: center;
+        border-radius: 8px;
+        font-size: 1.5em;
+        font-weight: 700;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+  }
+}

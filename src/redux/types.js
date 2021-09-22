@@ -1,1 +1,5 @@
 export const SET_POPULAR_MOVIES = "SET_POPULAR_MOVIES";
+export const SET_POPULAR_TV = "SET_POPULAR_TV";
+export const SET_FOR_RENT = "SET_FOR_RENT";
+export const SET_ON_THEATERS = "SET_ON_THEATERS";
+export const SET_NOW_PLAYING = "SET_NOW_PLAYING";

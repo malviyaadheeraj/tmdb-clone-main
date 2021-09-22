@@ -1,17 +1,37 @@
 import Axios from "./axios";
-import { SET_POPULAR_MOVIES } from "./types";
-// const API_KEY = "9f9076158baa1526af5c4cf189980da9";
+import { SET_NOW_PLAYING, SET_POPULAR_MOVIES, SET_POPULAR_TV } from "./types";
+const API_KEY = "9f9076158baa1526af5c4cf189980da9";
+const baseURL = "https://api.themoviedb.org/3";
 
 export const getPopularMovies = () => (dispatch) => {
   Axios.get(
-    `movie/popular?api_key=9f9076158baa1526af5c4cf189980da9&language=en-US&page=1`
+    `${baseURL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
   ).then((res) => {
     dispatch({
       type: SET_POPULAR_MOVIES,
-      payload: res.data,
+      payload: res.data.results,
     });
-    console.log(res);
   });
 };
 
-getPopularMovies();
+export const getPopularTv = () => (dispatch) => {
+  Axios.get(
+    `${baseURL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
+  ).then((res) => {
+    dispatch({
+      type: SET_POPULAR_TV,
+      payload: res.data.results,
+    });
+  });
+};
+
+export const getNowPlaying = () => (dispatch) => {
+  Axios.get(
+    `${baseURL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
+  ).then((res) => {
+    dispatch({
+      type: SET_NOW_PLAYING,
+      payload: res.data.results,
+    });
+  });
+};
