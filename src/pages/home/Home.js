@@ -1,13 +1,13 @@
 import React from "react";
-import PopularMovies from "../popularMovies/PopularMovies";
-import TrendingMovies from "../trendingMovies/TrendingMovies";
+import PopularMovies from "../../components/popularMovies/PopularMovies";
+import DocumentriesMovies from "../../components/trendingMovies/DocumentriesMovies";
+import TrendingMovies from "../../components/trendingMovies/TrendingMovies";
 import "./Home.scss";
 
 const Home = () => {
   return (
     <div className="home">
       <div className="homeBanner">
-        <div className="background-color"></div>
         <h1 className="homeBannerTitle">Welcome.</h1>
         <p>Millions of movies, TV shows and people to discover. Explore now.</p>
         <div className="homeBannerSearch">
@@ -19,8 +19,10 @@ const Home = () => {
           <button>Search</button>
         </div>
       </div>
+
       <PopularMovies />
       <TrendingMovies />
+      <DocumentriesMovies />
     </div>
   );
 };

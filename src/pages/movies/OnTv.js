@@ -1,34 +1,36 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getNowPlaying } from "../redux/homeAction";
+import { getOnTvShows } from "../../redux/homeAction";
 import "./PopularMovies.scss";
 
-const NowPlaying = () => {
+const OnTv = () => {
   const dispatch = useDispatch();
-  const nowPlayingMovies = useSelector((state) => state.home.nowPlayingMovies);
+  const onTvShows = useSelector((state) => state.home.onTvShows);
   const base_url = "https://image.tmdb.org/t/p/original/";
 
   useEffect(() => {
-    dispatch(getNowPlaying());
+    dispatch(getOnTvShows());
   }, []);
 
   return (
     <div className="popularMoviesWrapper">
-      <h2>Now Playing</h2>
+      <h2>Currently Airing TV Shows</h2>
       <div className="popularMovies">
         <div className="popularMoviesLeft">popularMoviesLeft</div>
         <div className="popularMoviesRight">
-          {nowPlayingMovies &&
-            nowPlayingMovies.map((nowPlayingMovie, key) => (
+          {onTvShows &&
+            onTvShows.map((onTvShow, key) => (
               <div className="popularMoviesCard" key={key}>
                 <img
-                  src={`${base_url}${nowPlayingMovie.poster_path}`}
+                  src={`${base_url}${onTvShow.poster_path}`}
                   alt=""
                   className="popularMoviesImage"
                 />
-                <small>{nowPlayingMovie.vote_average}</small>
-                <h4>{nowPlayingMovie.title}</h4>
-                <span>{nowPlayingMovie.release_date}</span>
+                <small>{onTvShow.vote_average}</small>
+                <h4>
+                  {onTvShow?.title || onTvShow?.name || onTvShow?.original_name}
+                </h4>
+                <span>{onTvShow.release_date || onTvShow.first_air_date}</span>
               </div>
             ))}
           <div className="popularButton">Load More</div>
@@ -38,4 +40,4 @@ const NowPlaying = () => {
   );
 };
 
-export default NowPlaying;
+export default OnTv;

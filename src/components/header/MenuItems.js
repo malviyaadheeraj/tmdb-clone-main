@@ -1,22 +1,22 @@
 export const MovieItems = [
   {
     title: "Popular",
-    to: "/moviepopular",
+    to: "/movie-popular",
     cName: "dropdownLink",
   },
   {
     title: "Now Playing",
-    to: "/nowplaying",
+    to: "/now-playing",
     cName: "dropdownLink",
   },
   {
     title: "Upcoming",
-    to: "/upcoming",
+    to: "/up-coming-movies",
     cName: "dropdownLink",
   },
   {
     title: "Top Rated",
-    to: "/movietoprated",
+    to: "/top-rated-movies",
     cName: "dropdownLink",
   },
 ];
@@ -24,22 +24,22 @@ export const MovieItems = [
 export const TvItems = [
   {
     title: "Popular",
-    to: "/tvpopular",
+    to: "/tv-popular",
     cName: "dropdownLink",
   },
   {
     title: "Airing Today",
-    to: "/airingtoday",
+    to: "/airing-today",
     cName: "dropdownLink",
   },
   {
     title: "On TV",
-    to: "/ontv",
+    to: "/on-tv",
     cName: "dropdownLink",
   },
   {
     title: "Top Rated",
-    to: "/tvtoprated",
+    to: "/tv-top-rated",
     cName: "dropdownLink",
   },
 ];

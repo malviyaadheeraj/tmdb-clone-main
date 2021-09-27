@@ -1,0 +1,50 @@
+.People {
+  padding: 20px 40px;
+
+  .peopleWrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 30px;
+
+    .peopleCard {
+      width: 235px;
+      margin-bottom: 30px;
+      border: 1px solid rgba(227, 227, 227, 1);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+      padding-bottom: 10px;
+      cursor: pointer;
+
+      .peopleImage {
+        width: 100%;
+        height: 235px;
+        background-position: center center;
+      }
+
+      .peopleName {
+        margin-left: 10px;
+      }
+
+      .peopleMovie {
+        margin-left: 10px;
+        color: gray;
+      }
+    }
+  }
+  .peopleButton {
+    margin-top: 30px;
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(1, 180, 228);
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+  }
+}

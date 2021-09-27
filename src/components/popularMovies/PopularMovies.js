@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getPopularMovies,
+  getPopularTv,
+  getActionMovies,
+  getHorrorMovies,
+  getRomanceMovies,
+} from "../../redux/homeAction";
 import "./PopularMovies.scss";
-import Streaming from "./Streaming";
-import OnTv from "./OnTv";
-import ForRent from "./ForRent";
-import InTheaters from "./InTheaters";
 
 const PopularMovies = () => {
   const [currentTab, setCurrentTab] = useState(0);
+  const dispatch = useDispatch();
+  const popularMovies = useSelector((state) => state.home.popularMovies);
+  const popularTvShows = useSelector((state) => state.home.popularTvShows);
+  const actionMovies = useSelector((state) => state.home.actionMovies);
+  const horrorMovies = useSelector((state) => state.home.horrorMovies);
+  const romanceMovies = useSelector((state) => state.home.romanceMovies);
+  const base_url = "https://image.tmdb.org/t/p/original/";
+
+  useEffect(() => {
+    dispatch(getPopularMovies());
+    dispatch(getPopularTv());
+    dispatch(getActionMovies());
+    dispatch(getHorrorMovies());
+    dispatch(getRomanceMovies());
+  }, []);
 
   return (
     <div className="homePopular">
@@ -29,20 +48,137 @@ const PopularMovies = () => {
             className={`button ${currentTab === 2 && "button-active"}`}
             onClick={() => setCurrentTab(2)}
           >
-            For Rent
+            Action
           </div>
           <div
             className={`button ${currentTab === 3 && "button-active"}`}
             onClick={() => setCurrentTab(3)}
           >
-            In Theaters
+            Horror
+          </div>
+          <div
+            className={`button ${currentTab === 4 && "button-active"}`}
+            onClick={() => setCurrentTab(4)}
+          >
+            Romance
           </div>
         </div>
       </div>
-      {currentTab === 0 && <Streaming />}
-      {/* {currentTab === 1 && <OnTv />}
-      {currentTab === 2 && <ForRent />}
-      {currentTab === 3 && <InTheaters />} */}
+      {currentTab === 0 && (
+        <div className="homePopularRow">
+          {popularMovies &&
+            popularMovies.map((popularMovie, key) => (
+              <div className="homePopularCard" key={key}>
+                <img
+                  src={`${base_url}${popularMovie.poster_path}`}
+                  alt=""
+                  className="homePopularImage"
+                />
+                <small>{popularMovie.vote_average}</small>
+                <h4>
+                  {popularMovie?.title ||
+                    popularMovie?.name ||
+                    popularMovie?.original_name}
+                </h4>
+                <span>
+                  {popularMovie.release_date || popularMovie.first_air_date}
+                </span>
+              </div>
+            ))}
+        </div>
+      )}
+      {currentTab === 1 && (
+        <div className="homePopularRow">
+          {popularTvShows &&
+            popularTvShows.map((popularTvShow, key) => (
+              <div className="homePopularCard" key={key}>
+                <img
+                  src={`${base_url}${popularTvShow.poster_path}`}
+                  alt=""
+                  className="homePopularImage"
+                />
+                <small>{popularTvShow.vote_average}</small>
+                <h4>
+                  {popularTvShow?.title ||
+                    popularTvShow?.name ||
+                    popularTvShow?.original_name}
+                </h4>
+                <span>
+                  {popularTvShow.release_date || popularTvShow.first_air_date}
+                </span>
+              </div>
+            ))}
+        </div>
+      )}
+      {currentTab === 2 && (
+        <div className="homePopularRow">
+          {actionMovies &&
+            actionMovies.map((actionMovie, key) => (
+              <div className="homePopularCard" key={key}>
+                <img
+                  src={`${base_url}${actionMovie.poster_path}`}
+                  alt=""
+                  className="homePopularImage"
+                />
+                <small>{actionMovie.vote_average}</small>
+                <h4>
+                  {actionMovie?.title ||
+                    actionMovie?.name ||
+                    actionMovie?.original_name}
+                </h4>
+                <span>
+                  {actionMovie.release_date || actionMovie.first_air_date}
+                </span>
+              </div>
+            ))}
+        </div>
+      )}
+      {currentTab === 3 && (
+        <div className="homePopularRow">
+          {horrorMovies &&
+            horrorMovies.map((horrorMovie, key) => (
+              <div className="homePopularCard" key={key}>
+                <img
+                  src={`${base_url}${horrorMovie.poster_path}`}
+                  alt=""
+                  className="homePopularImage"
+                />
+                <small>{horrorMovie.vote_average}</small>
+                <h4>
+                  {horrorMovie?.title ||
+                    horrorMovie?.name ||
+                    horrorMovie?.original_name}
+                </h4>
+                <span>
+                  {horrorMovie.release_date || horrorMovie.first_air_date}
+                </span>
+              </div>
+            ))}
+        </div>
+      )}
+      {currentTab === 4 && (
+        <div className="homePopularRow">
+          {romanceMovies &&
+            romanceMovies.map((romanceMovie, key) => (
+              <div className="homePopularCard" key={key}>
+                <img
+                  src={`${base_url}${romanceMovie.poster_path}`}
+                  alt=""
+                  className="homePopularImage"
+                />
+                <small>{romanceMovie.vote_average}</small>
+                <h4>
+                  {romanceMovie?.title ||
+                    romanceMovie?.name ||
+                    romanceMovie?.original_name}
+                </h4>
+                <span>
+                  {romanceMovie.release_date || romanceMovie.first_air_date}
+                </span>
+              </div>
+            ))}
+        </div>
+      )}
     </div>
   );
 };
