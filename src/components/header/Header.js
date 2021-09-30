@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Header.css";
+import "./Header.scss";
 import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import { Add, Search, Notifications } from "@material-ui/icons";
