@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnTvShows } from "../../redux/homeAction";
 import "./PopularMovies.scss";
+import PopularMoviesLeft from "./PopularMoviesLeft";
 
 const OnTv = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const OnTv = () => {
     <div className="popularMoviesWrapper">
       <h2>Currently Airing TV Shows</h2>
       <div className="popularMovies">
-        <div className="popularMoviesLeft">popularMoviesLeft</div>
+        <PopularMoviesLeft />
         <div className="popularMoviesRight">
           {onTvShows &&
             onTvShows.map((onTvShow, key) => (

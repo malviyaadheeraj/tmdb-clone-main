@@ -14,3 +14,6 @@ export const SET_ON_TV = "SET_ON_TV";
 export const SET_TOP_RATED_TV = "SET_TOP_RATED_TV";
 export const SET_PEOPLE = "SET_PEOPLE";
 export const SET_NETFLIX_ORIGINALS = "SET_NETFLIX_ORIGINALS";
+export const SET_REGISTER = "SET_REGISTER";
+export const SET_LOGIN = "SET_LOGIN";
+export const SET_LOGOUT = "SET_LOGOUT";

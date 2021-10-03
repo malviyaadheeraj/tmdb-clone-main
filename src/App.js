@@ -13,33 +13,28 @@ import AiringTodayTv from "./pages/movies/AiringTodayTv";
 import OnTv from "./pages/movies/OnTv";
 import TopRatedTv from "./pages/movies/TopRatedTv";
 import People from "./pages/people/People";
-import Login from "./pages/login/Login";
+import MovieDetails from "./pages/movieDetails/MovieDetails";
 
 function App() {
-  const user = null;
-
   return (
     <Router>
-      {!user ? (
-        <Login />
-      ) : (
-        <div className="app">
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/movie-popular" component={PopularMovies} />
-            <Route exact path="/now-playing" component={NowPlaying} />
-            <Route exact path="/top-rated-movies" component={TopRatedMovies} />
-            <Route exact path="/up-coming-movies" component={UpComingMovies} />
-            <Route exact path="/tv-popular" component={PopularTv} />
-            <Route exact path="/airing-today" component={AiringTodayTv} />
-            <Route exact path="/on-tv" component={OnTv} />
-            <Route exact path="/tv-top-rated" component={TopRatedTv} />
-            <Route exact path="/people" component={People} />
-          </Switch>
-          <Footer />
-        </div>
-      )}
+      <div className="app">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/movie-popular" component={PopularMovies} />
+          <Route exact path="/now-playing" component={NowPlaying} />
+          <Route exact path="/top-rated-movies" component={TopRatedMovies} />
+          <Route exact path="/up-coming-movies" component={UpComingMovies} />
+          <Route exact path="/tv-popular" component={PopularTv} />
+          <Route exact path="/airing-today" component={AiringTodayTv} />
+          <Route exact path="/on-tv" component={OnTv} />
+          <Route exact path="/tv-top-rated" component={TopRatedTv} />
+          <Route exact path="/people" component={People} />
+          <Route exact path="/movie-details" component={MovieDetails} />
+        </Switch>
+        <Footer />
+      </div>
     </Router>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPopularMovies } from "../../redux/homeAction";
 import "./PopularMovies.scss";
+import PopularMoviesLeft from "./PopularMoviesLeft";
 
 const PopularMovies = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ const PopularMovies = () => {
     <div className="popularMoviesWrapper">
       <h2>Popular Movies</h2>
       <div className="popularMovies">
-        <div className="popularMoviesLeft">popularMoviesLeft</div>
+        <PopularMoviesLeft />
         <div className="popularMoviesRight">
           {popularMovies &&
             popularMovies.map((popularMovie, key) => (
