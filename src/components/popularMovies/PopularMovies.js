@@ -25,7 +25,7 @@ const PopularMovies = () => {
     dispatch(getActionMovies());
     dispatch(getHorrorMovies());
     dispatch(getRomanceMovies());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="homePopular">

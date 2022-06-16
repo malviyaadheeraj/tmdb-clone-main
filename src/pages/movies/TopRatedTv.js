@@ -11,7 +11,7 @@ const TopRatedTv = () => {
 
   useEffect(() => {
     dispatch(getTopRatedTvShows());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="popularMoviesWrapper">

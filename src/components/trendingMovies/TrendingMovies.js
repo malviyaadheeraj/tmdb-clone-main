@@ -10,7 +10,7 @@ const TrendingMovies = () => {
 
   useEffect(() => {
     dispatch(getTrendingMovies());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="homeTrending">

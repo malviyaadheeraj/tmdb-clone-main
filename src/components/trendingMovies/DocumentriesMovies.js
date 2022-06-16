@@ -12,7 +12,7 @@ const DocumentriesMovies = () => {
 
   useEffect(() => {
     dispatch(getDocumentriesMovies());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="homeTrending">

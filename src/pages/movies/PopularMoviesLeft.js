@@ -1,6 +1,5 @@
 import React from "react";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
 const PopularMoviesLeft = () => {
   return (

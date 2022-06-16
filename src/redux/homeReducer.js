@@ -13,7 +13,6 @@ import {
   SET_ON_TV,
   SET_TOP_RATED_TV,
   SET_PEOPLE,
-  SET_NETFLIX_ORIGINALS,
 } from "./types";
 
 const initialState = {};
@@ -90,11 +89,6 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         getPeoples: action.payload,
       };
-    // case SET_NETFLIX_ORIGINALS:
-    //   return {
-    //     ...state,
-    //     netflixOriginals: action.payload,
-    //   };
     default:
       return state;
   }

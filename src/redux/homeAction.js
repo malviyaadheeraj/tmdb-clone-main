@@ -14,7 +14,6 @@ import {
   SET_ON_TV,
   SET_TOP_RATED_TV,
   SET_PEOPLE,
-  SET_NETFLIX_ORIGINALS,
 } from "./types";
 const API_KEY = "9f9076158baa1526af5c4cf189980da9";
 const baseURL = "https://api.themoviedb.org/3";
@@ -186,15 +185,3 @@ export const getPeople = () => (dispatch) => {
     });
   });
 };
-
-// // GET NETFLIX ORIGINALS
-// export const getNetflixOriginals = () => (dispatch) => {
-//   Axios.get(`${baseURL}/discover/tv?api_key=${API_KEY}&with_network=213`).then(
-//     (res) => {
-//       dispatch({
-//         type: SET_NETFLIX_ORIGINALS,
-//         payload: res.data.results,
-//       });
-//     }
-//   );
-// };

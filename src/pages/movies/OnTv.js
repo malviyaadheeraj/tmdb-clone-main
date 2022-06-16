@@ -11,7 +11,7 @@ const OnTv = () => {
 
   useEffect(() => {
     dispatch(getOnTvShows());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="popularMoviesWrapper">

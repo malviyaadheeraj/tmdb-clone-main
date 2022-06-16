@@ -6,8 +6,6 @@ import homeReducer from "./homeReducer";
 
 let middleware = [thunk];
 
-const initialState = {};
-
 const rootReducer = combineReducers({
   home: homeReducer,
 });

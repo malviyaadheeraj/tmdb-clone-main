@@ -11,7 +11,7 @@ const NowPlaying = () => {
 
   useEffect(() => {
     dispatch(getNowPlaying());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="popularMoviesWrapper">

@@ -37,10 +37,10 @@ const Header = () => {
             </Link>
             {movie && (
               <ul className="MovieDropdown">
-                {MovieItems.map((movieitem) => (
-                  <li className="dropdownItem" key={movieitem.id}>
-                    <Link to={movieitem.to} className={movieitem.cName}>
-                      {movieitem.title}
+                {MovieItems.map((item, key) => (
+                  <li className="dropdownItem" key={key}>
+                    <Link to={item.to} className={item.cName}>
+                      {item.title}
                     </Link>
                   </li>
                 ))}
@@ -53,10 +53,10 @@ const Header = () => {
             </Link>
             {tv && (
               <ul className="MovieDropdown">
-                {TvItems.map((tvitem) => (
-                  <li className="dropdownItem" key={tvitem.id}>
-                    <Link to={tvitem.to} className={tvitem.cName}>
-                      {tvitem.title}
+                {TvItems.map((item, key) => (
+                  <li className="dropdownItem" key={key}>
+                    <Link to={item.to} className={item.cName}>
+                      {item.title}
                     </Link>
                   </li>
                 ))}
@@ -73,10 +73,10 @@ const Header = () => {
             </Link>
             {people && (
               <ul className="MovieDropdown">
-                {PeopleItems.map((peopleitem) => (
-                  <li className="dropdownItem" key={peopleitem.id}>
-                    <Link to={peopleitem.to} className={peopleitem.cName}>
-                      {peopleitem.title}
+                {PeopleItems.map((item, key) => (
+                  <li className="dropdownItem" key={key}>
+                    <Link to={item.to} className={item.cName}>
+                      {item.title}
                     </Link>
                   </li>
                 ))}
@@ -93,10 +93,10 @@ const Header = () => {
             </Link>
             {more && (
               <ul className="MovieDropdown">
-                {MoreItems.map((moreitem) => (
-                  <li className="dropdownItem" key={moreitem.id}>
-                    <Link to={moreitem.to} className={moreitem.cName}>
-                      {moreitem.title}
+                {MoreItems.map((item, key) => (
+                  <li className="dropdownItem" key={key}>
+                    <Link to={item.to} className={item.cName}>
+                      {item.title}
                     </Link>
                   </li>
                 ))}

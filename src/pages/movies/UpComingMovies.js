@@ -11,7 +11,7 @@ const UpComingMovies = () => {
 
   useEffect(() => {
     dispatch(getUpComingMovies());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="popularMoviesWrapper">

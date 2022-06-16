@@ -11,7 +11,7 @@ const AiringTodayTv = () => {
 
   useEffect(() => {
     dispatch(getAiringTvShows());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="popularMoviesWrapper">

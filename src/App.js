@@ -14,6 +14,7 @@ import OnTv from "./pages/movies/OnTv";
 import TopRatedTv from "./pages/movies/TopRatedTv";
 import People from "./pages/people/People";
 import MovieDetails from "./pages/movieDetails/MovieDetails";
+import Search from "./pages/search/Search";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/search" component={Search} />
           <Route exact path="/movie-popular" component={PopularMovies} />
           <Route exact path="/now-playing" component={NowPlaying} />
           <Route exact path="/top-rated-movies" component={TopRatedMovies} />

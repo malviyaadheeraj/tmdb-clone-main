@@ -10,9 +10,7 @@ const People = () => {
 
   useEffect(() => {
     dispatch(getPeople());
-  }, []);
-
-  console.log(getPeoples);
+  }, [dispatch]);
 
   return (
     <div className="People">
