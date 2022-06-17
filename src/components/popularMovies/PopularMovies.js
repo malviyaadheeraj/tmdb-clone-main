@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import {
   getPopularMovies,
   getPopularTv,
@@ -69,17 +70,21 @@ const PopularMovies = () => {
           {popularMovies &&
             popularMovies.map((popularMovie, key) => (
               <div className="homePopularCard" key={key}>
-                <img
-                  src={`${base_url}${popularMovie.poster_path}`}
-                  alt=""
-                  className="homePopularImage"
-                />
+                <Link to={`/movie-details/${popularMovie.id}`}>
+                  <img
+                    src={`${base_url}${popularMovie.poster_path}`}
+                    alt=""
+                    className="homePopularImage"
+                  />
+                </Link>
                 <small>{popularMovie.vote_average}</small>
-                <h4>
-                  {popularMovie?.title ||
-                    popularMovie?.name ||
-                    popularMovie?.original_name}
-                </h4>
+                <Link to={`/movie-details/${popularMovie.id}`}>
+                  <h4>
+                    {popularMovie?.title ||
+                      popularMovie?.name ||
+                      popularMovie?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {popularMovie.release_date || popularMovie.first_air_date}
                 </span>
@@ -92,17 +97,21 @@ const PopularMovies = () => {
           {popularTvShows &&
             popularTvShows.map((popularTvShow, key) => (
               <div className="homePopularCard" key={key}>
-                <img
-                  src={`${base_url}${popularTvShow.poster_path}`}
-                  alt=""
-                  className="homePopularImage"
-                />
+                <Link to={`/movie-details/${popularTvShow.id}`}>
+                  <img
+                    src={`${base_url}${popularTvShow.poster_path}`}
+                    alt=""
+                    className="homePopularImage"
+                  />
+                </Link>
                 <small>{popularTvShow.vote_average}</small>
-                <h4>
-                  {popularTvShow?.title ||
-                    popularTvShow?.name ||
-                    popularTvShow?.original_name}
-                </h4>
+                <Link to={`/movie-details/${popularTvShow.id}`}>
+                  <h4>
+                    {popularTvShow?.title ||
+                      popularTvShow?.name ||
+                      popularTvShow?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {popularTvShow.release_date || popularTvShow.first_air_date}
                 </span>
@@ -115,17 +124,21 @@ const PopularMovies = () => {
           {actionMovies &&
             actionMovies.map((actionMovie, key) => (
               <div className="homePopularCard" key={key}>
-                <img
-                  src={`${base_url}${actionMovie.poster_path}`}
-                  alt=""
-                  className="homePopularImage"
-                />
+                <Link to={`/movie-details/${actionMovie.id}`}>
+                  <img
+                    src={`${base_url}${actionMovie.poster_path}`}
+                    alt=""
+                    className="homePopularImage"
+                  />
+                </Link>
                 <small>{actionMovie.vote_average}</small>
-                <h4>
-                  {actionMovie?.title ||
-                    actionMovie?.name ||
-                    actionMovie?.original_name}
-                </h4>
+                <Link to={`/movie-details/${actionMovie.id}`}>
+                  <h4>
+                    {actionMovie?.title ||
+                      actionMovie?.name ||
+                      actionMovie?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {actionMovie.release_date || actionMovie.first_air_date}
                 </span>
@@ -138,17 +151,21 @@ const PopularMovies = () => {
           {horrorMovies &&
             horrorMovies.map((horrorMovie, key) => (
               <div className="homePopularCard" key={key}>
-                <img
-                  src={`${base_url}${horrorMovie.poster_path}`}
-                  alt=""
-                  className="homePopularImage"
-                />
+                <Link to={`/movie-details/${horrorMovie.id}`}>
+                  <img
+                    src={`${base_url}${horrorMovie.poster_path}`}
+                    alt=""
+                    className="homePopularImage"
+                  />
+                </Link>
                 <small>{horrorMovie.vote_average}</small>
-                <h4>
-                  {horrorMovie?.title ||
-                    horrorMovie?.name ||
-                    horrorMovie?.original_name}
-                </h4>
+                <Link to={`/movie-details/${horrorMovie.id}`}>
+                  <h4>
+                    {horrorMovie?.title ||
+                      horrorMovie?.name ||
+                      horrorMovie?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {horrorMovie.release_date || horrorMovie.first_air_date}
                 </span>
@@ -161,17 +178,21 @@ const PopularMovies = () => {
           {romanceMovies &&
             romanceMovies.map((romanceMovie, key) => (
               <div className="homePopularCard" key={key}>
-                <img
-                  src={`${base_url}${romanceMovie.poster_path}`}
-                  alt=""
-                  className="homePopularImage"
-                />
+                <Link to={`/movie-details/${romanceMovie.id}`}>
+                  <img
+                    src={`${base_url}${romanceMovie.poster_path}`}
+                    alt=""
+                    className="homePopularImage"
+                  />
+                </Link>
                 <small>{romanceMovie.vote_average}</small>
-                <h4>
-                  {romanceMovie?.title ||
-                    romanceMovie?.name ||
-                    romanceMovie?.original_name}
-                </h4>
+                <Link to={`/movie-details/${romanceMovie.id}`}>
+                  <h4>
+                    {romanceMovie?.title ||
+                      romanceMovie?.name ||
+                      romanceMovie?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {romanceMovie.release_date || romanceMovie.first_air_date}
                 </span>

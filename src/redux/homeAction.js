@@ -14,6 +14,7 @@ import {
   SET_ON_TV,
   SET_TOP_RATED_TV,
   SET_PEOPLE,
+  SET_SINGLE_POPULAR_TV,
 } from "./types";
 const API_KEY = "9f9076158baa1526af5c4cf189980da9";
 const baseURL = "https://api.themoviedb.org/3";
@@ -136,6 +137,18 @@ export const getPopularTv = () => (dispatch) => {
       payload: res.data.results,
     });
   });
+};
+
+// GET SINGLE POPULAR TV SHOWS
+export const getSinglePopularTv = (data) => (dispatch) => {
+  Axios.get(`${baseURL}/tv/${data.id}?api_key=${API_KEY}&language=en-US`).then(
+    (res) => {
+      dispatch({
+        type: SET_SINGLE_POPULAR_TV,
+        payload: res.data,
+      });
+    }
+  );
 };
 
 // GET AIRING TV SHOWS

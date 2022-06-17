@@ -13,6 +13,7 @@ import {
   SET_ON_TV,
   SET_TOP_RATED_TV,
   SET_PEOPLE,
+  SET_SINGLE_POPULAR_TV,
 } from "./types";
 
 const initialState = {};
@@ -68,6 +69,11 @@ const homeReducer = (state = initialState, action) => {
       return {
         ...state,
         popularTvShows: action.payload,
+      };
+    case SET_SINGLE_POPULAR_TV:
+      return {
+        ...state,
+        singlePopularTvShows: action.payload,
       };
     case SET_AIRING_TODAY_TV:
       return {

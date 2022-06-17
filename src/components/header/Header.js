@@ -109,6 +109,12 @@ const Header = () => {
         <Add className="headerRightIcon" />
         <Notifications className="headerRightIcon" />
         <Avatar className="headerRightAvatar" />
+        <Link className="headerRight-link" to="/login">
+          Login
+        </Link>
+        <Link className="headerRight-link" to="/register">
+          Join TMDB
+        </Link>
         <Search className="headerRightIcon" />
       </div>
     </div>

@@ -15,6 +15,8 @@ import TopRatedTv from "./pages/movies/TopRatedTv";
 import People from "./pages/people/People";
 import MovieDetails from "./pages/movieDetails/MovieDetails";
 import Search from "./pages/search/Search";
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/search" component={Search} />
           <Route exact path="/movie-popular" component={PopularMovies} />
           <Route exact path="/now-playing" component={NowPlaying} />
@@ -33,7 +37,7 @@ function App() {
           <Route exact path="/on-tv" component={OnTv} />
           <Route exact path="/tv-top-rated" component={TopRatedTv} />
           <Route exact path="/people" component={People} />
-          <Route exact path="/movie-details" component={MovieDetails} />
+          <Route exact path="/movie-details/:id" component={MovieDetails} />
         </Switch>
         <Footer />
       </div>
