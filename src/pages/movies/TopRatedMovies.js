@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { getTopRatedMovies } from "../../redux/homeAction";
 import "./PopularMovies.scss";
@@ -34,7 +35,9 @@ const TopRatedMovies = () => {
                     topRatedMovie?.original_name}
                 </h4>
                 <span>
-                  {topRatedMovie.release_date || topRatedMovie.first_air_date}
+                  {moment(
+                    topRatedMovie.release_date || topRatedMovie.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}

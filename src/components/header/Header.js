@@ -10,6 +10,7 @@ const Header = () => {
   const [tv, setTv] = useState(false);
   const [people, setPeople] = useState(false);
   const [more, setMore] = useState(false);
+  const userDetails = JSON.parse(localStorage.getItem("user-login"));
 
   const movieEnter = () => setMovie(true);
   const movieLeave = () => setMovie(false);
@@ -107,14 +108,22 @@ const Header = () => {
       </div>
       <div className="headerRight">
         <Add className="headerRightIcon" />
-        <Notifications className="headerRightIcon" />
-        <Avatar className="headerRightAvatar" />
-        <Link className="headerRight-link" to="/login">
-          Login
-        </Link>
-        <Link className="headerRight-link" to="/register">
-          Join TMDB
-        </Link>
+        {userDetails ? (
+          <>
+            <Notifications className="headerRightIcon" />
+            <Avatar className="headerRightAvatar" />
+          </>
+        ) : (
+          <>
+            <Link className="headerRight-link" to="/login">
+              Login
+            </Link>
+            <Link className="headerRight-link" to="/register">
+              Join TMDB
+            </Link>
+          </>
+        )}
+
         <Search className="headerRightIcon" />
       </div>
     </div>

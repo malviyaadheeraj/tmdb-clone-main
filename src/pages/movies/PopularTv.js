@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { getPopularTv } from "../../redux/homeAction";
 import "./PopularMovies.scss";
@@ -34,7 +35,9 @@ const PopularTv = () => {
                     popularTvShow?.original_name}
                 </h4>
                 <span>
-                  {popularTvShow.release_date || popularTvShow.first_air_date}
+                  {moment(
+                    popularTvShow.release_date || popularTvShow.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}

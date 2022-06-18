@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getDocumentriesMovies } from "../../redux/homeAction";
+import moment from "moment";
+import { Link } from "react-router-dom";
 import "./TrendingMovies.scss";
 
 const DocumentriesMovies = () => {
@@ -21,20 +23,26 @@ const DocumentriesMovies = () => {
         {documentriesMovies &&
           documentriesMovies.map((documentriesMovie, key) => (
             <div className="homeTrendingCard" key={key}>
-              <img
-                src={`${base_url}${documentriesMovie.poster_path}`}
-                alt=""
-                className="homeTrendingImage"
-              />
+              <Link to={`/movie-details/${documentriesMovie.id}`}>
+                <img
+                  src={`${base_url}${documentriesMovie.poster_path}`}
+                  alt=""
+                  className="homeTrendingImage"
+                />
+              </Link>
               <small>{documentriesMovie.vote_average}</small>
-              <h4>
-                {documentriesMovie?.title ||
-                  documentriesMovie?.name ||
-                  documentriesMovie?.original_name}
-              </h4>
+              <Link to={`/movie-details/${documentriesMovie.id}`}>
+                <h4>
+                  {documentriesMovie?.title ||
+                    documentriesMovie?.name ||
+                    documentriesMovie?.original_name}
+                </h4>
+              </Link>
               <span>
-                {documentriesMovie.release_date ||
-                  documentriesMovie.first_air_date}
+                {moment(
+                  documentriesMovie.release_date ||
+                    documentriesMovie.first_air_date
+                ).format("DD MMM YYYY")}
               </span>
             </div>
           ))}

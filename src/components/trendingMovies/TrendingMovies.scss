@@ -59,9 +59,17 @@
           font-size: 6px;
         }
       }
-      h4 {
-        margin-top: 25px;
-        margin-left: 10px;
+
+      a {
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        &:hover {
+          color: #01b4e4;
+        }
+        h4 {
+          margin-top: 25px;
+          margin-left: 10px;
+        }
       }
       span {
         margin-left: 10px;

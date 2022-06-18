@@ -8,6 +8,7 @@
     width: 20.5%;
     border-radius: 8px;
     border: 1px solid #dbdbdb;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
     .register-heading {
       color: white;
       font-weight: 600;
@@ -43,6 +44,29 @@
       font-weight: 400;
       .registerLink {
         color: rgb(102, 205, 240);
+      }
+    }
+    .register-error {
+      margin: 25px 0px;
+      border: 1px solid #dbdbdb;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+      .register-errorTitle {
+        padding: 20px 20px;
+        background-color: #d40242;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        color: white;
+        font-weight: 600;
+        .fa {
+          font-size: 17px;
+        }
+        span {
+          margin-left: 10px;
+        }
+      }
+      .registerError-text {
+        padding: 20px 40px;
       }
     }
     .registerFrom {

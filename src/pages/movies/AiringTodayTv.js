@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { getAiringTvShows } from "../../redux/homeAction";
 import "./PopularMovies.scss";
@@ -34,8 +35,10 @@ const AiringTodayTv = () => {
                     airingTodayShow?.original_name}
                 </h4>
                 <span>
-                  {airingTodayShow.release_date ||
-                    airingTodayShow.first_air_date}
+                  {moment(
+                    airingTodayShow.release_date ||
+                      airingTodayShow.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}

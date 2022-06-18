@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getOnTvShows } from "../../redux/homeAction";
 import "./PopularMovies.scss";
+import moment from "moment";
 import PopularMoviesLeft from "./PopularMoviesLeft";
 
 const OnTv = () => {
@@ -31,7 +32,12 @@ const OnTv = () => {
                 <h4>
                   {onTvShow?.title || onTvShow?.name || onTvShow?.original_name}
                 </h4>
-                <span>{onTvShow.release_date || onTvShow.first_air_date}</span>
+
+                <span>
+                  {moment(
+                    onTvShow.release_date || onTvShow.first_air_date
+                  ).format("DD MMM YYYY")}
+                </span>
               </div>
             ))}
           <div className="popularButton">Load More</div>

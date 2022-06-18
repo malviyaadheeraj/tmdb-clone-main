@@ -1,10 +1,8 @@
-import { Tooltip } from "@material-ui/core";
-import React from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { getSinglePopularTv } from "../../redux/homeAction";
+import React, { useEffect } from "react";
 import "./MovieDetails.scss";
+import moment from "moment";
+import { useSelector, useDispatch } from "react-redux";
+import { getSinglePopularTv } from "../../redux/homeAction";
 
 const MovieDetails = ({ match }) => {
   const dispatch = useDispatch();
@@ -19,6 +17,8 @@ const MovieDetails = ({ match }) => {
     };
     dispatch(getSinglePopularTv(data));
   }, []);
+
+  console.log(singlePopularTvShows);
 
   return (
     <div className="movieDetailsWrapper">
@@ -63,17 +63,40 @@ const MovieDetails = ({ match }) => {
             <div className="movieDetailsRight">
               <h1 className="movieNameTitle">
                 {singlePopularTvShows && singlePopularTvShows.name}{" "}
-                <span>(2021)</span>
+                <span>
+                  (
+                  {moment(
+                    singlePopularTvShows && singlePopularTvShows.first_air_date
+                  ).format("YYYY")}
+                  )
+                </span>
               </h1>
               <div className="movieReleaseDate">
-                <span>17/09/2021 (IN)</span>
-                <span className="movieDote">.</span>
-                <span className="movieGenres">
-                  <div>Comedy</div>,<div>Action</div>,<div>Adventure</div>,
-                  <div>Science Fiction</div>
+                <span>
+                  {moment(
+                    singlePopularTvShows && singlePopularTvShows.first_air_date
+                  ).format("DD/MM/YYYY")}
+                  (
+                  {singlePopularTvShows &&
+                    singlePopularTvShows.origin_country.map((item, key) => (
+                      <div>{item}</div>
+                    ))}
+                  )
                 </span>
                 <span className="movieDote">.</span>
-                <span>1h 55m</span>
+                <span className="movieGenres">
+                  {singlePopularTvShows &&
+                    singlePopularTvShows.genres.map((item, key) => (
+                      <div>{item.name}, </div>
+                    ))}
+                </span>
+                <span className="movieDote">.</span>
+                <span>
+                  {singlePopularTvShows &&
+                    singlePopularTvShows.episode_run_time.map((item, key) => (
+                      <div>{item}m</div>
+                    ))}
+                </span>
               </div>
               <div className="movieDetails-rating">
                 <div className="movieDetails-avrage">
@@ -102,14 +125,21 @@ const MovieDetails = ({ match }) => {
                 </div>
               </div>
               <h4 className="movieDetails-italic">
-                45.6 billion won is child's play.
+                {singlePopularTvShows && singlePopularTvShows.tagline}
               </h4>
               <h3 className="movieDetails-overview">Overview</h3>
               <p className="movieDetails-para">
                 {singlePopularTvShows && singlePopularTvShows.overview}
               </p>
-              <h3 className="movieDetails-overview">Hwang Dong-hyuk</h3>
-              <p>Creator</p>
+              <div className="overview-wrapper">
+                {singlePopularTvShows &&
+                  singlePopularTvShows.created_by.map((item, key) => (
+                    <div key={key}>
+                      <h3 className="movieDetails-overview">{item.name}</h3>
+                      <p>Creator</p>
+                    </div>
+                  ))}
+              </div>
             </div>
           </div>
         </div>

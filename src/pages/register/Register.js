@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Register.scss";
+import { auth } from "../../firebase";
+import { useHistory } from "react-router-dom";
 
 const Register = () => {
+  const history = useHistory();
+  const [values, setValues] = useState({});
+  const [error, setError] = useState("");
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(values.email, values.password)
+      .then((userCredential) => {
+        var user = userCredential.user;
+
+        if (user) {
+          history.push("/login");
+        }
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        setError(errorMessage);
+      });
   };
 
   return (
@@ -40,15 +64,40 @@ const Register = () => {
           Signing up for an account is free and easy. Fill out the form below to
           get started. JavaScript is required to to continue.
         </p>
+        {error ? (
+          <div className="register-error">
+            <h3 className="register-errorTitle">
+              <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+              <span>There was an error processing your signup</span>
+            </h3>
+            <ul className="registerError-text">
+              <li>{error}</li>
+            </ul>
+          </div>
+        ) : null}
 
         <form onSubmit={handleSubmit} className="registerFrom">
           <div className="registerInputWrapper">
             <label htmlFor="username">Username</label>
-            <input type="email" className="registerInput" required />
+            <input
+              type="email"
+              name="email"
+              value={values && values.email}
+              onChange={onInputChange}
+              className="registerInput"
+              required
+            />
           </div>
           <div className="registerInputWrapper">
             <label htmlFor="password">Password</label>
-            <input type="password" className="registerInput" required />
+            <input
+              type="password"
+              name="password"
+              value={values && values.password}
+              onChange={onInputChange}
+              className="registerInput"
+              required
+            />
           </div>
           <button type="submit" className="registerButton">
             Sign Up

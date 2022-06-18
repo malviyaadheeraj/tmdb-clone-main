@@ -1,3 +1,4 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -86,7 +87,9 @@ const PopularMovies = () => {
                   </h4>
                 </Link>
                 <span>
-                  {popularMovie.release_date || popularMovie.first_air_date}
+                  {moment(
+                    popularMovie.release_date || popularMovie.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}
@@ -113,7 +116,9 @@ const PopularMovies = () => {
                   </h4>
                 </Link>
                 <span>
-                  {popularTvShow.release_date || popularTvShow.first_air_date}
+                  {moment(
+                    popularTvShow.release_date || popularTvShow.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}
@@ -140,7 +145,9 @@ const PopularMovies = () => {
                   </h4>
                 </Link>
                 <span>
-                  {actionMovie.release_date || actionMovie.first_air_date}
+                  {moment(
+                    actionMovie.release_date || actionMovie.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}
@@ -167,7 +174,9 @@ const PopularMovies = () => {
                   </h4>
                 </Link>
                 <span>
-                  {horrorMovie.release_date || horrorMovie.first_air_date}
+                  {moment(
+                    horrorMovie.release_date || horrorMovie.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}
@@ -194,7 +203,9 @@ const PopularMovies = () => {
                   </h4>
                 </Link>
                 <span>
-                  {romanceMovie.release_date || romanceMovie.first_air_date}
+                  {moment(
+                    romanceMovie.release_date || romanceMovie.first_air_date
+                  ).format("DD MMM YYYY")}
                 </span>
               </div>
             ))}

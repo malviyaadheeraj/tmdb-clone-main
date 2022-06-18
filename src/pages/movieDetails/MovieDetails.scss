@@ -52,6 +52,9 @@
           .movieReleaseDate {
             display: flex;
             align-items: center;
+            span {
+              display: flex;
+            }
             .movieGenres {
               display: flex;
               align-items: center;
@@ -125,7 +128,7 @@
             font-weight: 600;
           }
           .movieDetails-para {
-            margin: 10px 0px;
+            margin: 15px 0px;
           }
         }
       }
