@@ -1,29 +1,54 @@
 import React from "react";
-import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
+import { useState } from "react";
+import Sort from "../../components/sort/Sort";
+import Filter from "../../components/filter/Filter";
+import WhereToWatch from "../../components/whereToWatch/WhereToWatch";
 
 const PopularMoviesLeft = () => {
+  const [sortOpen, setSortOpen] = useState(false);
+  const [filterOpen, setFilterOpen] = useState(false);
+  const [whereToWatchOpen, setWhereToWatchOpen] = useState(false);
+
   return (
     <div className="popularMoviesLeft">
       <div className="popularMoviesCard">
-        <div className="cardHeaderTitle">
+        <div className="cardHeaderTitle" onClick={() => setSortOpen(!sortOpen)}>
           <span>Sort</span>
-          <KeyboardArrowRightIcon />
+          {sortOpen ? (
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          ) : (
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          )}
         </div>
-        <div className="cardBody"></div>
+        {sortOpen && <Sort />}
       </div>
       <div className="popularMoviesCard">
-        <div className="cardHeaderTitle">
+        <div
+          className="cardHeaderTitle"
+          onClick={() => setFilterOpen(!filterOpen)}
+        >
           <span>Filter</span>
-          <KeyboardArrowRightIcon />
+          {filterOpen ? (
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          ) : (
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          )}
         </div>
-        <div className="cardBody"></div>
+        {filterOpen && <Filter />}
       </div>
       <div className="popularMoviesCard">
-        <div className="cardHeaderTitle">
+        <div
+          className="cardHeaderTitle"
+          onClick={() => setWhereToWatchOpen(!whereToWatchOpen)}
+        >
           <span>Where to Watch</span>
-          <KeyboardArrowRightIcon />
+          {whereToWatchOpen ? (
+            <i class="fa fa-chevron-down" aria-hidden="true"></i>
+          ) : (
+            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          )}
         </div>
-        <div className="cardBody"></div>
+        {whereToWatchOpen && <WhereToWatch />}
       </div>
     </div>
   );

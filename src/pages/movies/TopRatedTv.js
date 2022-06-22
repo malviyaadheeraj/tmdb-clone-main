@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getTopRatedTvShows } from "../../redux/homeAction";
 import "./PopularMovies.scss";
 import PopularMoviesLeft from "./PopularMoviesLeft";
+import { Link } from "react-router-dom";
 
 const TopRatedTv = () => {
   const dispatch = useDispatch();
@@ -23,17 +24,21 @@ const TopRatedTv = () => {
           {topRatedTvShows &&
             topRatedTvShows.map((topRatedTvShow, key) => (
               <div className="popularMoviesCard" key={key}>
-                <img
-                  src={`${base_url}${topRatedTvShow.poster_path}`}
-                  alt=""
-                  className="popularMoviesImage"
-                />
+                <Link to={`/movie-details/${topRatedTvShow.id}`}>
+                  <img
+                    src={`${base_url}${topRatedTvShow.poster_path}`}
+                    alt=""
+                    className="popularMoviesImage"
+                  />
+                </Link>
                 <small>{topRatedTvShow.vote_average}</small>
-                <h4>
-                  {topRatedTvShow?.title ||
-                    topRatedTvShow?.name ||
-                    topRatedTvShow?.original_name}
-                </h4>
+                <Link to={`/movie-details/${topRatedTvShow.id}`}>
+                  <h4>
+                    {topRatedTvShow?.title ||
+                      topRatedTvShow?.name ||
+                      topRatedTvShow?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {moment(
                     topRatedTvShow.release_date || topRatedTvShow.first_air_date

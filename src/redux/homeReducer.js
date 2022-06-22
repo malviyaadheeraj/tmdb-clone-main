@@ -14,6 +14,8 @@ import {
   SET_TOP_RATED_TV,
   SET_PEOPLE,
   SET_SINGLE_POPULAR_TV,
+  SET_SINGLE_POPULAR_MOVIES,
+  SET_MOVIES_GENRES,
 } from "./types";
 
 const initialState = {};
@@ -75,6 +77,11 @@ const homeReducer = (state = initialState, action) => {
         ...state,
         singlePopularTvShows: action.payload,
       };
+    case SET_SINGLE_POPULAR_MOVIES:
+      return {
+        ...state,
+        singlePopularMoviesShows: action.payload,
+      };
     case SET_AIRING_TODAY_TV:
       return {
         ...state,
@@ -94,6 +101,11 @@ const homeReducer = (state = initialState, action) => {
       return {
         ...state,
         getPeoples: action.payload,
+      };
+    case SET_MOVIES_GENRES:
+      return {
+        ...state,
+        getMoviesGenresList: action.payload,
       };
     default:
       return state;

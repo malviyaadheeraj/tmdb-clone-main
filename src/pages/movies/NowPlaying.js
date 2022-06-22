@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getNowPlaying } from "../../redux/homeAction";
 import "./PopularMovies.scss";
 import PopularMoviesLeft from "./PopularMoviesLeft";
+import { Link } from "react-router-dom";
 
 const NowPlaying = () => {
   const dispatch = useDispatch();
@@ -23,17 +24,21 @@ const NowPlaying = () => {
           {nowPlayingMovies &&
             nowPlayingMovies.map((nowPlayingMovie, key) => (
               <div className="popularMoviesCard" key={key}>
-                <img
-                  src={`${base_url}${nowPlayingMovie.poster_path}`}
-                  alt=""
-                  className="popularMoviesImage"
-                />
+                <Link to={`/movie-details/${nowPlayingMovie.id}`}>
+                  <img
+                    src={`${base_url}${nowPlayingMovie.poster_path}`}
+                    alt=""
+                    className="popularMoviesImage"
+                  />
+                </Link>
                 <small>{nowPlayingMovie.vote_average}</small>
-                <h4>
-                  {nowPlayingMovie?.title ||
-                    nowPlayingMovie?.name ||
-                    nowPlayingMovie?.original_name}
-                </h4>
+                <Link to={`/movie-details/${nowPlayingMovie.id}`}>
+                  <h4>
+                    {nowPlayingMovie?.title ||
+                      nowPlayingMovie?.name ||
+                      nowPlayingMovie?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {moment(
                     nowPlayingMovie.release_date ||

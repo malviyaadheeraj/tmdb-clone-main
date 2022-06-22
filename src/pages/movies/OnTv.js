@@ -4,6 +4,7 @@ import { getOnTvShows } from "../../redux/homeAction";
 import "./PopularMovies.scss";
 import moment from "moment";
 import PopularMoviesLeft from "./PopularMoviesLeft";
+import { Link } from "react-router-dom";
 
 const OnTv = () => {
   const dispatch = useDispatch();
@@ -23,16 +24,21 @@ const OnTv = () => {
           {onTvShows &&
             onTvShows.map((onTvShow, key) => (
               <div className="popularMoviesCard" key={key}>
-                <img
-                  src={`${base_url}${onTvShow.poster_path}`}
-                  alt=""
-                  className="popularMoviesImage"
-                />
+                <Link to={`/movie-details/${onTvShow.id}`}>
+                  <img
+                    src={`${base_url}${onTvShow.poster_path}`}
+                    alt=""
+                    className="popularMoviesImage"
+                  />
+                </Link>
                 <small>{onTvShow.vote_average}</small>
-                <h4>
-                  {onTvShow?.title || onTvShow?.name || onTvShow?.original_name}
-                </h4>
-
+                <Link to={`/movie-details/${onTvShow.id}`}>
+                  <h4>
+                    {onTvShow?.title ||
+                      onTvShow?.name ||
+                      onTvShow?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {moment(
                     onTvShow.release_date || onTvShow.first_air_date

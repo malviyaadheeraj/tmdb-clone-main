@@ -15,6 +15,8 @@ import {
   SET_TOP_RATED_TV,
   SET_PEOPLE,
   SET_SINGLE_POPULAR_TV,
+  SET_SINGLE_POPULAR_MOVIES,
+  SET_MOVIES_GENRES,
 } from "./types";
 const API_KEY = "9f9076158baa1526af5c4cf189980da9";
 const baseURL = "https://api.themoviedb.org/3";
@@ -139,18 +141,6 @@ export const getPopularTv = () => (dispatch) => {
   });
 };
 
-// GET SINGLE POPULAR TV SHOWS
-export const getSinglePopularTv = (data) => (dispatch) => {
-  Axios.get(`${baseURL}/tv/${data.id}?api_key=${API_KEY}&language=en-US`).then(
-    (res) => {
-      dispatch({
-        type: SET_SINGLE_POPULAR_TV,
-        payload: res.data,
-      });
-    }
-  );
-};
-
 // GET AIRING TV SHOWS
 export const getAiringTvShows = () => (dispatch) => {
   Axios.get(
@@ -195,6 +185,42 @@ export const getPeople = () => (dispatch) => {
     dispatch({
       type: SET_PEOPLE,
       payload: res.data.results,
+    });
+  });
+};
+
+// GET SINGLE POPULAR TV SHOWS
+export const getSinglePopularTv = (data) => (dispatch) => {
+  Axios.get(`${baseURL}/tv/${data.id}?api_key=${API_KEY}&language=en-US`).then(
+    (res) => {
+      dispatch({
+        type: SET_SINGLE_POPULAR_TV,
+        payload: res.data,
+      });
+    }
+  );
+};
+
+// GET SINGLE POPULAR MOVIES SHOWS
+export const getSinglePopularMovies = (data) => (dispatch) => {
+  Axios.get(
+    `${baseURL}/movie/${data.id}?api_key=${API_KEY}&language=en-US`
+  ).then((res) => {
+    dispatch({
+      type: SET_SINGLE_POPULAR_MOVIES,
+      payload: res.data,
+    });
+  });
+};
+
+// GET MOVIES GENRES
+export const getMoviesGenres = (data) => (dispatch) => {
+  Axios.get(
+    `${baseURL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
+  ).then((res) => {
+    dispatch({
+      type: SET_MOVIES_GENRES,
+      payload: res.data.genres,
     });
   });
 };

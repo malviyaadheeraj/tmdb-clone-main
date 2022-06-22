@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getUpComingMovies } from "../../redux/homeAction";
 import "./PopularMovies.scss";
 import PopularMoviesLeft from "./PopularMoviesLeft";
+import { Link } from "react-router-dom";
 
 const UpComingMovies = () => {
   const dispatch = useDispatch();
@@ -23,17 +24,21 @@ const UpComingMovies = () => {
           {upComingMovies &&
             upComingMovies.map((upComingMovie, key) => (
               <div className="popularMoviesCard" key={key}>
-                <img
-                  src={`${base_url}${upComingMovie.poster_path}`}
-                  alt=""
-                  className="popularMoviesImage"
-                />
+                <Link to={`/movie-details/${upComingMovie.id}`}>
+                  <img
+                    src={`${base_url}${upComingMovie.poster_path}`}
+                    alt=""
+                    className="popularMoviesImage"
+                  />
+                </Link>
                 <small>{upComingMovie.vote_average}</small>
-                <h4>
-                  {upComingMovie?.title ||
-                    upComingMovie?.name ||
-                    upComingMovie?.original_name}
-                </h4>
+                <Link to={`/movie-details/${upComingMovie.id}`}>
+                  <h4>
+                    {upComingMovie?.title ||
+                      upComingMovie?.name ||
+                      upComingMovie?.original_name}
+                  </h4>
+                </Link>
                 <span>
                   {moment(
                     upComingMovie.release_date || upComingMovie.first_air_date
