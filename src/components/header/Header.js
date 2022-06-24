@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import { Add, Search, Notifications } from "@material-ui/icons";
 import { MovieItems, TvItems, PeopleItems, MoreItems } from "./MenuItems";
+import { auth } from "../../firebase";
 
 const Header = () => {
   const [movie, setMovie] = useState(false);
@@ -20,6 +21,11 @@ const Header = () => {
   const peopleLeave = () => setPeople(false);
   const moreEnter = () => setMore(true);
   const moreLeave = () => setMore(false);
+
+  const onLogout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
 
   return (
     <div className="header">
@@ -111,7 +117,10 @@ const Header = () => {
         {userDetails ? (
           <>
             <Notifications className="headerRightIcon" />
-            <Avatar className="headerRightAvatar" />
+            <Avatar src={userDetails.photoURL} className="headerRightAvatar" />
+            <div className="header-logout" onClick={onLogout}>
+              <h4>Logout</h4>
+            </div>
           </>
         ) : (
           <>

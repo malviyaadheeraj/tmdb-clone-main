@@ -17,6 +17,7 @@ import MovieDetails from "./pages/movieDetails/MovieDetails";
 import Search from "./pages/search/Search";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
+import TvDetails from "./pages/movieDetails/TvDetails";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route exact path="/tv-top-rated" component={TopRatedTv} />
           <Route exact path="/people" component={People} />
           <Route exact path="/movie-details/:id" component={MovieDetails} />
+          <Route exact path="/tv-details/:id" component={TvDetails} />
         </Switch>
         <Footer />
       </div>

@@ -24,7 +24,7 @@ const AiringTodayTv = () => {
           {airingTodayShows &&
             airingTodayShows.map((airingTodayShow, key) => (
               <div className="popularMoviesCard" key={key}>
-                <Link to={`/movie-details/${airingTodayShow.id}`}>
+                <Link to={`/tv-details/${airingTodayShow.id}`}>
                   <img
                     src={`${base_url}${airingTodayShow.poster_path}`}
                     alt=""
@@ -32,7 +32,7 @@ const AiringTodayTv = () => {
                   />
                 </Link>
                 <small>{airingTodayShow.vote_average}</small>
-                <Link to={`/movie-details/${airingTodayShow.id}`}>
+                <Link to={`/tv-details/${airingTodayShow.id}`}>
                   <h4>
                     {airingTodayShow?.title ||
                       airingTodayShow?.name ||

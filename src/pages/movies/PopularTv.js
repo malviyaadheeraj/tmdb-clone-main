@@ -24,7 +24,7 @@ const PopularTv = () => {
           {popularTvShows &&
             popularTvShows.map((popularTvShow, key) => (
               <div className="popularMoviesCard" key={key}>
-                <Link to={`/movie-details/${popularTvShow.id}`}>
+                <Link to={`/tv-details/${popularTvShow.id}`}>
                   <img
                     src={`${base_url}${popularTvShow.poster_path}`}
                     alt=""
@@ -32,7 +32,7 @@ const PopularTv = () => {
                   />
                 </Link>
                 <small>{popularTvShow.vote_average}</small>
-                <Link to={`/movie-details/${popularTvShow.id}`}>
+                <Link to={`/tv-details/${popularTvShow.id}`}>
                   <h4>
                     {popularTvShow?.title ||
                       popularTvShow?.name ||

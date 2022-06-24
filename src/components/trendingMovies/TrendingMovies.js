@@ -21,21 +21,41 @@ const TrendingMovies = () => {
         {trendingMovies &&
           trendingMovies.map((trendingMovie, key) => (
             <div className="homeTrendingCard" key={key}>
-              <Link to={`/movie-details/${trendingMovie.id}`}>
-                <img
-                  src={`${base_url}${trendingMovie.poster_path}`}
-                  alt=""
-                  className="homeTrendingImage"
-                />
-              </Link>
+              {trendingMovie.media_type === "movie" ? (
+                <Link to={`/movie-details/${trendingMovie.id}`}>
+                  <img
+                    src={`${base_url}${trendingMovie.poster_path}`}
+                    alt=""
+                    className="homeTrendingImage"
+                  />
+                </Link>
+              ) : trendingMovie.media_type === "tv" ? (
+                <Link to={`/tv-details/${trendingMovie.id}`}>
+                  <img
+                    src={`${base_url}${trendingMovie.poster_path}`}
+                    alt=""
+                    className="homeTrendingImage"
+                  />
+                </Link>
+              ) : null}
               <small>{trendingMovie.vote_average}</small>
-              <Link to={`/movie-details/${trendingMovie.id}`}>
-                <h4>
-                  {trendingMovie?.title ||
-                    trendingMovie?.name ||
-                    trendingMovie?.original_name}
-                </h4>
-              </Link>
+              {trendingMovie.media_type === "movie" ? (
+                <Link to={`/movie-details/${trendingMovie.id}`}>
+                  <h4>
+                    {trendingMovie?.title ||
+                      trendingMovie?.name ||
+                      trendingMovie?.original_name}
+                  </h4>
+                </Link>
+              ) : trendingMovie.media_type === "tv" ? (
+                <Link to={`/tv-details/${trendingMovie.id}`}>
+                  <h4>
+                    {trendingMovie?.title ||
+                      trendingMovie?.name ||
+                      trendingMovie?.original_name}
+                  </h4>
+                </Link>
+              ) : null}
               <span>
                 {moment(
                   trendingMovie.release_date || trendingMovie.first_air_date

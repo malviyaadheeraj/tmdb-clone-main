@@ -2,11 +2,15 @@ import React from "react";
 import "./Footer.scss";
 
 const Footer = () => {
+  const userDetails = JSON.parse(localStorage.getItem("user-login"));
+
   return (
     <div className="footer">
       <div className="footerBox">
         <img src="assets/footerlogo.svg" alt="" className="footerBoxImage" />
-        <h3 className="footerBoxUsername">Hi Dheeraj Malviya</h3>
+        <h3 className="footerBoxUsername">
+          Hi {userDetails && userDetails.displayName}
+        </h3>
       </div>
       <div className="footerBox">
         <small className="footerBoxTitle">TIME BASICS</small>

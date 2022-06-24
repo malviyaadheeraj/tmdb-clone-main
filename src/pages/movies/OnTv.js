@@ -24,7 +24,7 @@ const OnTv = () => {
           {onTvShows &&
             onTvShows.map((onTvShow, key) => (
               <div className="popularMoviesCard" key={key}>
-                <Link to={`/movie-details/${onTvShow.id}`}>
+                <Link to={`/tv-details/${onTvShow.id}`}>
                   <img
                     src={`${base_url}${onTvShow.poster_path}`}
                     alt=""
@@ -32,7 +32,7 @@ const OnTv = () => {
                   />
                 </Link>
                 <small>{onTvShow.vote_average}</small>
-                <Link to={`/movie-details/${onTvShow.id}`}>
+                <Link to={`/tv-details/${onTvShow.id}`}>
                   <h4>
                     {onTvShow?.title ||
                       onTvShow?.name ||

@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import "./MovieDetails.scss";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
-import { getSinglePopularMovies } from "../../redux/homeAction";
+import { getSinglePopularTv } from "../../redux/homeAction";
 
-const MovieDetails = ({ match }) => {
+const TvDetails = ({ match }) => {
   const dispatch = useDispatch();
-  const singlePopularMoviesShows = useSelector(
-    (state) => state.home.singlePopularMoviesShows
+  const singlePopularTvShows = useSelector(
+    (state) => state.home.singlePopularTvShows
   );
   const base_url = "https://image.tmdb.org/t/p/original/";
 
@@ -15,33 +15,33 @@ const MovieDetails = ({ match }) => {
     const data = {
       id: match.params.id,
     };
-    dispatch(getSinglePopularMovies(data));
+    dispatch(getSinglePopularTv(data));
   }, []);
 
   return (
     <div className="movieDetailsWrapper">
-      <div className="movieDetailsHeader">
-        <div className="movieDetails-dropdown">
-          <span>Overview</span>
-          <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </div>
-        <div className="movieDetails-dropdown">
-          <span>Media</span>
-          <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </div>
-        <div className="movieDetails-dropdown">
-          <span>Fandom</span>
-          <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </div>
-        <div className="movieDetails-dropdown">
-          <span>Share</span>
-          <i class="fa fa-caret-down" aria-hidden="true"></i>
-        </div>
-      </div>
+      {/* <div className="movieDetailsHeader">
+          <div className="movieDetails-dropdown">
+            <span>Overview</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+          <div className="movieDetails-dropdown">
+            <span>Media</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+          <div className="movieDetails-dropdown">
+            <span>Fandom</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+          <div className="movieDetails-dropdown">
+            <span>Share</span>
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+        </div> */}
       <div
         className="movieDetailsBody"
         style={{
-          backgroundImage: `url("${base_url}${singlePopularMoviesShows?.backdrop_path}")`,
+          backgroundImage: `url("${base_url}${singlePopularTvShows?.backdrop_path}")`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center 200px center",
@@ -50,20 +50,20 @@ const MovieDetails = ({ match }) => {
         <div className="movieDetailsBackground">
           <div className="movieDetailsData">
             <img
-              src={`${base_url}${singlePopularMoviesShows?.poster_path}`}
+              src={`${base_url}${singlePopularTvShows?.poster_path}`}
               alt=""
               className="movieDetailsImage"
             />
             <div className="movieDetailsRight">
               <h1 className="movieNameTitle">
-                {singlePopularMoviesShows?.title ||
-                  singlePopularMoviesShows?.name ||
-                  singlePopularMoviesShows?.original_name}
+                {singlePopularTvShows?.title ||
+                  singlePopularTvShows?.name ||
+                  singlePopularTvShows?.original_name}
                 <span>
                   (
                   {moment(
-                    singlePopularMoviesShows?.release_date ||
-                      singlePopularMoviesShows?.first_air_date
+                    singlePopularTvShows?.release_date ||
+                      singlePopularTvShows?.first_air_date
                   ).format("YYYY")}
                   )
                 </span>
@@ -71,25 +71,26 @@ const MovieDetails = ({ match }) => {
               <div className="movieReleaseDate">
                 <span>
                   {moment(
-                    singlePopularMoviesShows?.release_date ||
-                      singlePopularMoviesShows?.first_air_date
+                    singlePopularTvShows?.release_date ||
+                      singlePopularTvShows?.first_air_date
                   ).format("DD/MM/YYYY")}
-                  {/*(
-                       {singlePopularMoviesShows &&
-                        singlePopularMoviesShows.origin_country.map(
-                          (item, key) => <div>{item}</div>
-                        )}
-                      ) */}
+                  (
+                  {singlePopularTvShows?.origin_country?.map((item, key) => (
+                    <div>{item}</div>
+                  ))}
+                  )
                 </span>
                 <span className="movieDote">.</span>
                 <span className="movieGenres">
-                  {singlePopularMoviesShows?.genres.map((item, key) => (
+                  {singlePopularTvShows?.genres?.map((item, key) => (
                     <div>{item.name}, </div>
                   ))}
                 </span>
                 <span className="movieDote">.</span>
                 <span>
-                  {moment(singlePopularMoviesShows?.runtime).format("HH:MM")}
+                  {singlePopularTvShows?.episode_run_time?.map((item, key) => (
+                    <div>{item}m</div>
+                  ))}
                 </span>
               </div>
               <div className="movieDetails-rating">
@@ -119,21 +120,20 @@ const MovieDetails = ({ match }) => {
                 </div>
               </div>
               <h4 className="movieDetails-italic">
-                {singlePopularMoviesShows?.tagline}
+                {singlePopularTvShows?.tagline}
               </h4>
               <h3 className="movieDetails-overview">Overview</h3>
               <p className="movieDetails-para">
-                {singlePopularMoviesShows?.overview}
+                {singlePopularTvShows?.overview}
               </p>
-              {/* <div className="overview-wrapper">
-                    {singlePopularMoviesShows &&
-                      singlePopularMoviesShows.created_by.map((item, key) => (
-                        <div key={key}>
-                          <h3 className="movieDetails-overview">{item.name}</h3>
-                          <p>Creator</p>
-                        </div>
-                      ))}
-                  </div> */}
+              <div className="overview-wrapper">
+                {singlePopularTvShows?.created_by?.map((item, key) => (
+                  <div key={key}>
+                    <h3 className="movieDetails-overview">{item.name}</h3>
+                    <p>Creator</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -142,4 +142,4 @@ const MovieDetails = ({ match }) => {
   );
 };
 
-export default MovieDetails;
+export default TvDetails;

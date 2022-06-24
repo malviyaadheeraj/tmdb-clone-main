@@ -13,12 +13,29 @@ const Register = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-
     auth
       .createUserWithEmailAndPassword(values.email, values.password)
       .then((userCredential) => {
         var user = userCredential.user;
-
+        auth.onAuthStateChanged(function (user) {
+          if (user) {
+            user
+              .updateProfile({
+                displayName: values.username,
+                photoURL:
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREIyn-9sU7CATcIqQa4o_6Weiv9ntZJVbVMA&usqp=CAU",
+              })
+              .then(
+                function () {
+                  var displayName = user.displayName;
+                  var photoURL = user.photoURL;
+                },
+                function (error) {
+                  console.log(error);
+                }
+              );
+          }
+        });
         if (user) {
           history.push("/login");
         }
@@ -79,6 +96,17 @@ const Register = () => {
         <form onSubmit={handleSubmit} className="registerFrom">
           <div className="registerInputWrapper">
             <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              value={values && values.username}
+              onChange={onInputChange}
+              className="registerInput"
+              required
+            />
+          </div>
+          <div className="registerInputWrapper">
+            <label htmlFor="username">Email</label>
             <input
               type="email"
               name="email"

@@ -24,7 +24,7 @@ const TopRatedTv = () => {
           {topRatedTvShows &&
             topRatedTvShows.map((topRatedTvShow, key) => (
               <div className="popularMoviesCard" key={key}>
-                <Link to={`/movie-details/${topRatedTvShow.id}`}>
+                <Link to={`/tv-details/${topRatedTvShow.id}`}>
                   <img
                     src={`${base_url}${topRatedTvShow.poster_path}`}
                     alt=""
@@ -32,7 +32,7 @@ const TopRatedTv = () => {
                   />
                 </Link>
                 <small>{topRatedTvShow.vote_average}</small>
-                <Link to={`/movie-details/${topRatedTvShow.id}`}>
+                <Link to={`/tv-details/${topRatedTvShow.id}`}>
                   <h4>
                     {topRatedTvShow?.title ||
                       topRatedTvShow?.name ||
