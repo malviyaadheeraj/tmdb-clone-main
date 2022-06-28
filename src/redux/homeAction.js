@@ -21,18 +21,6 @@ import {
 const API_KEY = "9f9076158baa1526af5c4cf189980da9";
 const baseURL = "https://api.themoviedb.org/3";
 
-// GET POPULAR MOVIES
-export const getPopularMovies = () => (dispatch) => {
-  Axios.get(
-    `${baseURL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
-  ).then((res) => {
-    dispatch({
-      type: SET_POPULAR_MOVIES,
-      payload: res.data.results,
-    });
-  });
-};
-
 // GET ACTION MOVIES
 export const getActionMovies = () => (dispatch) => {
   Axios.get(`${baseURL}/discover/movie?api_key=${API_KEY}&with_genres=28`).then(
@@ -93,10 +81,22 @@ export const getDocumentriesMovies = () => (dispatch) => {
   );
 };
 
-// GET NOW PLAYING
-export const getNowPlaying = () => (dispatch) => {
+// GET POPULAR MOVIES
+export const getPopularMovies = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=2`
+    `${baseURL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
+  ).then((res) => {
+    dispatch({
+      type: SET_POPULAR_MOVIES,
+      payload: res.data.results,
+    });
+  });
+};
+
+// GET NOW PLAYING
+export const getNowPlaying = (pageNumber) => (dispatch) => {
+  Axios.get(
+    `${baseURL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_NOW_PLAYING,
@@ -106,9 +106,9 @@ export const getNowPlaying = () => (dispatch) => {
 };
 
 // GET UP COMING MOVIES
-export const getUpComingMovies = () => (dispatch) => {
+export const getUpComingMovies = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_UP_COMING_MOVIES,
@@ -118,9 +118,9 @@ export const getUpComingMovies = () => (dispatch) => {
 };
 
 // GET TOP RATED MOVIES
-export const getTopRatedMovies = () => (dispatch) => {
+export const getTopRatedMovies = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_TOP_RATED_MOVIES,
@@ -130,9 +130,9 @@ export const getTopRatedMovies = () => (dispatch) => {
 };
 
 // GET POPULAR TV SHOWS
-export const getPopularTv = () => (dispatch) => {
+export const getPopularTv = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/tv/popular?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/tv/popular?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_POPULAR_TV,
@@ -142,9 +142,9 @@ export const getPopularTv = () => (dispatch) => {
 };
 
 // GET AIRING TV SHOWS
-export const getAiringTvShows = () => (dispatch) => {
+export const getAiringTvShows = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/tv/airing_today?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/tv/airing_today?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_AIRING_TODAY_TV,
@@ -154,9 +154,9 @@ export const getAiringTvShows = () => (dispatch) => {
 };
 
 // GET ON TV SHOWS
-export const getOnTvShows = () => (dispatch) => {
+export const getOnTvShows = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/tv/on_the_air?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_ON_TV,
@@ -166,9 +166,9 @@ export const getOnTvShows = () => (dispatch) => {
 };
 
 // GET TOP RATED TV SHOWS
-export const getTopRatedTvShows = () => (dispatch) => {
+export const getTopRatedTvShows = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/tv/top_rated?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_TOP_RATED_TV,
@@ -178,9 +178,9 @@ export const getTopRatedTvShows = () => (dispatch) => {
 };
 
 // GET PEOPLE
-export const getPeople = () => (dispatch) => {
+export const getPeople = (pageNumber) => (dispatch) => {
   Axios.get(
-    `${baseURL}/person/popular?api_key=${API_KEY}&language=en-US&page=1`
+    `${baseURL}/person/popular?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
   ).then((res) => {
     dispatch({
       type: SET_PEOPLE,

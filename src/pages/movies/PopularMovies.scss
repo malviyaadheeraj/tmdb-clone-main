@@ -6,6 +6,15 @@
   .popularMovies {
     display: flex;
     justify-content: space-between;
+    .loader-wrapper {
+      width: 300px;
+      height: 300px;
+      .loader-image {
+        width: 300px;
+        height: 300px;
+      }
+    }
+
     .popularMoviesLeft {
       width: 20%;
       margin-top: 20px;
