@@ -8,9 +8,13 @@ const Footer = () => {
     <div className="footer">
       <div className="footerBox">
         <img src="assets/footerlogo.svg" alt="" className="footerBoxImage" />
-        <h3 className="footerBoxUsername">
-          Hi {userDetails && userDetails.displayName}
-        </h3>
+        {userDetails ? (
+          <h3 className="footerBoxUsername">
+            Hi {userDetails && userDetails.displayName}
+          </h3>
+        ) : (
+          <h3 className="footerBoxUsername">JOIN THE COMMUNITY</h3>
+        )}
       </div>
       <div className="footerBox">
         <small className="footerBoxTitle">TIME BASICS</small>

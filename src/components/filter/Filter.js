@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMoviesGenres } from "../../redux/homeAction";
 
-const Filter = () => {
+const Filter = ({ onInputChange, handleGenres, selected }) => {
   const dispatch = useDispatch();
   const getMoviesGenresList = useSelector(
     (state) => state.home.getMoviesGenresList
@@ -14,7 +14,7 @@ const Filter = () => {
 
   return (
     <div className="cardBody-wrapper">
-      <div className="cardBody-showMe">
+      {/* <div className="cardBody-showMe">
         <h3 className="cardBody-title">Show Me</h3>
         <div className="cardBody-inputWrapper">
           <input type="radio" id="everything" name="name" />
@@ -35,16 +35,16 @@ const Filter = () => {
           <input type="checkbox" id="availabilities" name="name" />
           <label for="availabilities">Search all availabilities?</label>
         </div>
-      </div>
+      </div> */}
       <div className="cardBody-releaseDates">
         <h3 className="cardBody-title">Release Dates</h3>
         <div className="cardBody-inputWrapper">
           <label>From</label>
-          <input type="date" />
+          <input type="date" onChange={onInputChange} name="fromDate" />
         </div>
         <div className="cardBody-inputWrapper">
           <label>To</label>
-          <input type="date" />
+          <input type="date" onChange={onInputChange} name="toDate" />
         </div>
       </div>
       <div className="cardBody-genres">
@@ -52,7 +52,25 @@ const Filter = () => {
         <div className="cardBody-inputWrapper">
           {getMoviesGenresList &&
             getMoviesGenresList.map((genres, key) => (
-              <span key={key}>{genres.name}</span>
+              <>
+                {selected === genres.name ? (
+                  <span
+                    className="selectedGenres"
+                    key={key}
+                    onClick={() => handleGenres(genres)}
+                  >
+                    {genres.name}
+                  </span>
+                ) : (
+                  <span
+                    className="cardBodyGenres"
+                    key={key}
+                    onClick={() => handleGenres(genres)}
+                  >
+                    {genres.name}
+                  </span>
+                )}
+              </>
             ))}
         </div>
       </div>

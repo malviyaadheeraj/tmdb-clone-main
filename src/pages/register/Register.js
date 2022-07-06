@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Register.scss";
-import { auth } from "../../firebase";
+import { auth, facebookProvider, googleProvider } from "../../firebase";
 import { useHistory } from "react-router-dom";
 
 const Register = () => {
@@ -47,6 +47,42 @@ const Register = () => {
       });
   };
 
+  const handleGoogleLogin = () => {
+    auth
+      .signInWithPopup(googleProvider)
+      .then((result) => {
+        var user = result.user;
+        localStorage.setItem("user-login", JSON.stringify(user));
+        if (user) {
+          history.push("/");
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
+  const handleFacebookLogin = () => {
+    auth
+      .signInWithPopup(facebookProvider)
+      .then((result) => {
+        var user = result.user;
+        localStorage.setItem("user-login", JSON.stringify(user));
+        if (user) {
+          history.push("/");
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
   return (
     <div className="register-wrapper">
       <div className="register-left">
@@ -81,7 +117,7 @@ const Register = () => {
           Signing up for an account is free and easy. Fill out the form below to
           get started. JavaScript is required to to continue.
         </p>
-        {error ? (
+        {error && (
           <div className="register-error">
             <h3 className="register-errorTitle">
               <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
@@ -91,7 +127,7 @@ const Register = () => {
               <li>{error}</li>
             </ul>
           </div>
-        ) : null}
+        )}
 
         <form onSubmit={handleSubmit} className="registerFrom">
           <div className="registerInputWrapper">
@@ -131,6 +167,16 @@ const Register = () => {
             Sign Up
           </button>
         </form>
+        <div className="socialLogin-wrapper">
+          <div className="googleSocial-wrapper" onClick={handleGoogleLogin}>
+            <img src="/assets/google-image.jpg" alt="" />
+            <span>Login with google</span>
+          </div>
+          <div className="googleSocial-wrapper" onClick={handleFacebookLogin}>
+            <img src="/assets/facebook-image.jpg" alt="" />
+            <span>Login with facebook</span>
+          </div>
+        </div>
       </div>
     </div>
   );

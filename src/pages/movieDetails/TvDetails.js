@@ -128,7 +128,7 @@ const TvDetails = ({ match }) => {
               </p>
               <div className="overview-wrapper">
                 {singlePopularTvShows?.created_by?.map((item, key) => (
-                  <div key={key}>
+                  <div className="overviewItem-wrapper" key={key}>
                     <h3 className="movieDetails-overview">{item.name}</h3>
                     <p>Creator</p>
                   </div>

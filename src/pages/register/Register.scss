@@ -109,5 +109,23 @@
         font-size: 1rem;
       }
     }
+    .socialLogin-wrapper {
+      margin-top: 30px;
+      .googleSocial-wrapper {
+        margin-top: 20px;
+        width: 200px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        img {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+        span {
+          margin-left: 10px;
+        }
+      }
+    }
   }
 }

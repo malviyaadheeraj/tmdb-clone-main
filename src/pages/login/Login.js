@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Login.scss";
-import { auth } from "../../firebase";
-import { Link } from "react-router-dom";
+import { auth, facebookProvider, googleProvider } from "../../firebase";
 import { useHistory } from "react-router-dom";
 
 const Login = () => {
@@ -32,6 +31,42 @@ const Login = () => {
       });
   };
 
+  const handleGoogleLogin = () => {
+    auth
+      .signInWithPopup(googleProvider)
+      .then((result) => {
+        var user = result.user;
+        localStorage.setItem("user-login", JSON.stringify(user));
+        if (user) {
+          history.push("/");
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
+  const handleFacebookLogin = () => {
+    auth
+      .signInWithPopup(facebookProvider)
+      .then((result) => {
+        var user = result.user;
+        localStorage.setItem("user-login", JSON.stringify(user));
+        if (user) {
+          history.push("/");
+          window.location.reload();
+        }
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        setError(errorMessage);
+      });
+  };
+
   return (
     <div className="login">
       <h2 className="loginTitle">Login to your account</h2>
@@ -40,7 +75,7 @@ const Login = () => {
         get started. JavaScript is required to to continue.
       </p>
 
-      {error ? (
+      {error && (
         <div className="login-error">
           <h3 className="login-errorTitle">
             <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
@@ -50,7 +85,7 @@ const Login = () => {
             <li>{error}</li>
           </ul>
         </div>
-      ) : null}
+      )}
 
       <form onSubmit={handleSubmit} className="loginFrom">
         <div className="loginInputWrapper">
@@ -79,6 +114,17 @@ const Login = () => {
           Login
         </button>
       </form>
+
+      <div className="socialLogin-wrapper">
+        <div className="googleSocial-wrapper" onClick={handleGoogleLogin}>
+          <img src="/assets/google-image.jpg" alt="" />
+          <span>Login with google</span>
+        </div>
+        <div className="googleSocial-wrapper" onClick={handleFacebookLogin}>
+          <img src="/assets/facebook-image.jpg" alt="" />
+          <span>Login with facebook</span>
+        </div>
+      </div>
     </div>
   );
 };

@@ -57,7 +57,7 @@ const Search = () => {
         <div className="searchBody-right">
           <div className="bodyRight-image">
             <img
-              src="https://www.themoviedb.org/t/p/w94_and_h141_bestv2/cdkyMYdu8ao26XOBvilNzLneUg1.jpg"
+              src="https://image.tmdb.org/t/p/original//cdkyMYdu8ao26XOBvilNzLneUg1.jpg"
               alt=""
             />
           </div>

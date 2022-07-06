@@ -124,8 +124,14 @@
             font-weight: 500;
             margin-bottom: 10px;
           }
-          .movieDetails-overview {
-            font-weight: 600;
+          .overview-wrapper {
+            display: flex;
+            .overviewItem-wrapper {
+              width: 33.33%;
+            }
+            .movieDetails-overview {
+              font-weight: 600;
+            }
           }
           .movieDetails-para {
             margin: 15px 0px;

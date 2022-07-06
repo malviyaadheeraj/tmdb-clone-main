@@ -20,7 +20,7 @@ const MovieDetails = ({ match }) => {
 
   return (
     <div className="movieDetailsWrapper">
-      <div className="movieDetailsHeader">
+      {/* <div className="movieDetailsHeader">
         <div className="movieDetails-dropdown">
           <span>Overview</span>
           <i class="fa fa-caret-down" aria-hidden="true"></i>
@@ -37,7 +37,7 @@ const MovieDetails = ({ match }) => {
           <span>Share</span>
           <i class="fa fa-caret-down" aria-hidden="true"></i>
         </div>
-      </div>
+      </div> */}
       <div
         className="movieDetailsBody"
         style={{

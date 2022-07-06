@@ -1,17 +1,31 @@
 import React from "react";
 import { useState } from "react";
-import Sort from "../../components/sort/Sort";
 import Filter from "../../components/filter/Filter";
+import Sort from "../../components/sort/Sort";
 import WhereToWatch from "../../components/whereToWatch/WhereToWatch";
 
 const PopularMoviesLeft = () => {
-  const [sortOpen, setSortOpen] = useState(false);
+  const [values, setValues] = useState({});
+  const [genres, setGenres] = useState("");
+  const [selected, setSelected] = useState();
   const [filterOpen, setFilterOpen] = useState(false);
+  const [sortOpen, setSortOpen] = useState(false);
   const [whereToWatchOpen, setWhereToWatchOpen] = useState(false);
+
+  const onInputChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleGenres = (data) => {
+    setSelected(data.name);
+    setGenres(data.name);
+  };
+
+  const searchMovies = () => {};
 
   return (
     <div className="popularMoviesLeft">
-      <div className="popularMoviesCard">
+      {/* <div className="popularMoviesCard">
         <div className="cardHeaderTitle" onClick={() => setSortOpen(!sortOpen)}>
           <span>Sort</span>
           {sortOpen ? (
@@ -21,7 +35,7 @@ const PopularMoviesLeft = () => {
           )}
         </div>
         {sortOpen && <Sort />}
-      </div>
+      </div> */}
       <div className="popularMoviesCard">
         <div
           className="cardHeaderTitle"
@@ -34,9 +48,15 @@ const PopularMoviesLeft = () => {
             <i class="fa fa-chevron-right" aria-hidden="true"></i>
           )}
         </div>
-        {filterOpen && <Filter />}
+        {filterOpen && (
+          <Filter
+            onInputChange={onInputChange}
+            handleGenres={handleGenres}
+            selected={selected}
+          />
+        )}
       </div>
-      <div className="popularMoviesCard">
+      {/* <div className="popularMoviesCard">
         <div
           className="cardHeaderTitle"
           onClick={() => setWhereToWatchOpen(!whereToWatchOpen)}
@@ -49,7 +69,11 @@ const PopularMoviesLeft = () => {
           )}
         </div>
         {whereToWatchOpen && <WhereToWatch />}
-      </div>
+      </div> */}
+
+      <button className="search-button" onClick={searchMovies}>
+        Search
+      </button>
     </div>
   );
 };
