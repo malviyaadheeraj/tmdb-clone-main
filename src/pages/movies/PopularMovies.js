@@ -47,7 +47,7 @@ const PopularMovies = () => {
                         className="popularMoviesImage"
                       />
                     </Link>
-                    <small>{popularMovie.vote_average}</small>
+                    {/* <small>{popularMovie.vote_average}</small> */}
                     <Link to={`/movie-details/${popularMovie.id}`}>
                       <h4>
                         {popularMovie?.title ||

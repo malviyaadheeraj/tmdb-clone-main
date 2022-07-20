@@ -30,7 +30,7 @@ const DocumentriesMovies = () => {
                   className="homeTrendingImage"
                 />
               </Link>
-              <small>{documentriesMovie.vote_average}</small>
+              {/* <small>{documentriesMovie.vote_average}</small> */}
               <Link to={`/movie-details/${documentriesMovie.id}`}>
                 <h4>
                   {documentriesMovie?.title ||

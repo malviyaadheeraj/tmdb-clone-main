@@ -47,7 +47,7 @@ const UpComingMovies = () => {
                         className="popularMoviesImage"
                       />
                     </Link>
-                    <small>{upComingMovie.vote_average}</small>
+                    {/* <small>{upComingMovie.vote_average}</small> */}
                     <Link to={`/movie-details/${upComingMovie.id}`}>
                       <h4>
                         {upComingMovie?.title ||

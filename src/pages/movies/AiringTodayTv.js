@@ -47,7 +47,7 @@ const AiringTodayTv = () => {
                         className="popularMoviesImage"
                       />
                     </Link>
-                    <small>{airingTodayShow.vote_average}</small>
+                    {/* <small>{airingTodayShow.vote_average}</small> */}
                     <Link to={`/tv-details/${airingTodayShow.id}`}>
                       <h4>
                         {airingTodayShow?.title ||

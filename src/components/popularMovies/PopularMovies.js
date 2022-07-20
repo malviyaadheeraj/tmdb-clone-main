@@ -78,7 +78,7 @@ const PopularMovies = () => {
                     className="homePopularImage"
                   />
                 </Link>
-                <small>{popularMovie.vote_average}</small>
+                {/* <small>{popularMovie.vote_average}</small> */}
                 <Link to={`/movie-details/${popularMovie.id}`}>
                   <h4>
                     {popularMovie?.title ||
@@ -107,7 +107,7 @@ const PopularMovies = () => {
                     className="homePopularImage"
                   />
                 </Link>
-                <small>{popularTvShow.vote_average}</small>
+                {/* <small>{popularTvShow.vote_average}</small> */}
                 <Link to={`/tv-details/${popularTvShow.id}`}>
                   <h4>
                     {popularTvShow?.title ||
@@ -136,7 +136,7 @@ const PopularMovies = () => {
                     className="homePopularImage"
                   />
                 </Link>
-                <small>{actionMovie.vote_average}</small>
+                {/* <small>{actionMovie.vote_average}</small> */}
                 <Link to={`/movie-details/${actionMovie.id}`}>
                   <h4>
                     {actionMovie?.title ||
@@ -165,7 +165,7 @@ const PopularMovies = () => {
                     className="homePopularImage"
                   />
                 </Link>
-                <small>{horrorMovie.vote_average}</small>
+                {/* <small>{horrorMovie.vote_average}</small> */}
                 <Link to={`/movie-details/${horrorMovie.id}`}>
                   <h4>
                     {horrorMovie?.title ||
@@ -194,7 +194,7 @@ const PopularMovies = () => {
                     className="homePopularImage"
                   />
                 </Link>
-                <small>{romanceMovie.vote_average}</small>
+                {/* <small>{romanceMovie.vote_average}</small> */}
                 <Link to={`/movie-details/${romanceMovie.id}`}>
                   <h4>
                     {romanceMovie?.title ||

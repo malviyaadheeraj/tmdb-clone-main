@@ -47,7 +47,7 @@ const TopRatedTv = () => {
                         className="popularMoviesImage"
                       />
                     </Link>
-                    <small>{topRatedTvShow.vote_average}</small>
+                    {/* <small>{topRatedTvShow.vote_average}</small> */}
                     <Link to={`/tv-details/${topRatedTvShow.id}`}>
                       <h4>
                         {topRatedTvShow?.title ||

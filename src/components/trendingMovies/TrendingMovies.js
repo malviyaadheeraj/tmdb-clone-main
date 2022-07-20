@@ -38,7 +38,7 @@ const TrendingMovies = () => {
                   />
                 </Link>
               ) : null}
-              <small>{trendingMovie.vote_average}</small>
+              {/* <small>{trendingMovie.vote_average}</small> */}
               {trendingMovie.media_type === "movie" ? (
                 <Link to={`/movie-details/${trendingMovie.id}`}>
                   <h4>

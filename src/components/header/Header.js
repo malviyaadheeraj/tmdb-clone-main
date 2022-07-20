@@ -39,9 +39,7 @@ const Header = () => {
             onMouseEnter={movieEnter}
             onMouseLeave={movieLeave}
           >
-            <Link to="/" className="navLink">
-              Movies
-            </Link>
+            <span className="navLink">Movies</span>
             {movie && (
               <ul className="MovieDropdown">
                 {MovieItems.map((item, key) => (
@@ -55,9 +53,7 @@ const Header = () => {
             )}
           </li>
           <li className="navItem" onMouseEnter={tvEnter} onMouseLeave={tvLeave}>
-            <Link to="/" className="navLink">
-              TV Shows
-            </Link>
+            <span className="navLink">TV Shows</span>
             {tv && (
               <ul className="MovieDropdown">
                 {TvItems.map((item, key) => (
@@ -75,9 +71,7 @@ const Header = () => {
             onMouseEnter={peopleEnter}
             onMouseLeave={peopleLeave}
           >
-            <Link to="/" className="navLink">
-              People
-            </Link>
+            <span className="navLink">People</span>
             {people && (
               <ul className="MovieDropdown">
                 {PeopleItems.map((item, key) => (
@@ -95,9 +89,7 @@ const Header = () => {
             onMouseEnter={moreEnter}
             onMouseLeave={moreLeave}
           >
-            <Link to="/" className="navLink">
-              More
-            </Link>
+            <span className="navLink">More</span>
             {more && (
               <ul className="MovieDropdown">
                 {MoreItems.map((item, key) => (

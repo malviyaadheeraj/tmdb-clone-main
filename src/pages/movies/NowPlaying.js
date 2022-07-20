@@ -47,7 +47,7 @@ const NowPlaying = () => {
                         className="popularMoviesImage"
                       />
                     </Link>
-                    <small>{nowPlayingMovie.vote_average}</small>
+                    {/* <small>{nowPlayingMovie.vote_average}</small> */}
                     <Link to={`/movie-details/${nowPlayingMovie.id}`}>
                       <h4>
                         {nowPlayingMovie?.title ||

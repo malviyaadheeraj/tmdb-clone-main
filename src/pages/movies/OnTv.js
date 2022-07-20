@@ -47,7 +47,7 @@ const OnTv = () => {
                         className="popularMoviesImage"
                       />
                     </Link>
-                    <small>{onTvShow.vote_average}</small>
+                    {/* <small>{onTvShow.vote_average}</small> */}
                     <Link to={`/tv-details/${onTvShow.id}`}>
                       <h4>
                         {onTvShow?.title ||
